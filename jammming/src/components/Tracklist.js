@@ -1,6 +1,6 @@
 import {Track} from './Track';
 
-class Tracklist{
+export default class Tracklist{
     constructor(){
         this.tracklist = [Track];
     }
@@ -14,5 +14,3 @@ class Tracklist{
         this.tracklist.push(track);
     }
 }
-
-export default {Tracklist};

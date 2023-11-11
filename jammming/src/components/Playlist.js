@@ -1,17 +1,33 @@
-import { Tracklist } from './Tracklist'
+import Tracklist from '../components/Tracklist'
+import React, {useState} from 'react';
 
-class Playlist{
-    constructor(){
-        this.playlistName = "Untitled";
-        this.tracklist = Tracklist();
+function Playlist(){
+    const tracklist = Tracklist.constructor();
+    const [playlistName, setPlaylistName] = useState();
+
+    const changePlaylistName = (e) => {
+        setPlaylistName(e.target.value);
     }
-    constructor(name){
-        this.playlistName = name;
+
+    const handleDisplay = () => {
+        let output;
+        for(const track in tracklist.getTracklist()){
+            output += (
+                <h3>{track.name} by {track.artist}</h3>
+            );
+        }
+        return output;
     }
-    setPlaylistName(name){
-        this.playlistName = name;
-    }
-    getPlaylistName(){
-        return this.playlistName;
-    }
+
+    return (
+        <div 
+            className="Playlist" 
+            id="playlist"
+        >
+            <h2>Playlist: {playlistName}</h2>
+            {handleDisplay}
+        </div>
+    );
 }
+
+export default Playlist;
